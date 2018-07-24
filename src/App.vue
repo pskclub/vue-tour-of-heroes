@@ -1,12 +1,20 @@
 <template>
-<h1>{{title}}</h1>
+<div>
+  <h1>{{title}}</h1>
+  <heroes-component />
+</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import HeroesComponent from '@/components/Hero.vue';
 
-@Component
+@Component({
+  components: {
+    HeroesComponent,
+  },
+})
 export default class App extends Vue {
   private title: string;
 
@@ -24,7 +32,8 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
-h2, h3 {
+h2,
+h3 {
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
@@ -32,7 +41,9 @@ h2, h3 {
 body {
   margin: 2em;
 }
-body, input[text], button {
+body,
+input[text],
+button {
   color: #888;
   font-family: Cambria, Georgia;
 }
