@@ -16,8 +16,11 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import container from '../di';
 import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
+import { HeroService } from '@/hero.service';
+import SERVICE_IDENTIFIER from '../identifiers';
 import HeroDetailComponent from '@/components/hero-detail-component.vue';
 
 @Component({
@@ -26,20 +29,26 @@ import HeroDetailComponent from '@/components/hero-detail-component.vue';
   },
 })
 export default class HeroesComponent extends Vue {
-  private selectedHero: Hero;
-  private heroes = HEROES;
+  private selectedHero: Hero | null;
+  private heroes?: Hero[];
+  private heroService!: HeroService;
 
   constructor() {
     super();
-    this.selectedHero = { id: -1, name: '' };
+    this.selectedHero = null;
+    this.heroService = container.get<HeroService>(SERVICE_IDENTIFIER.HERO_SERVICE);
   }
 
   private created() {
-    //
+    this.getHeroes();
   }
 
   private onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  private getHeroes(): void {
+    this.heroService.getHeroes().subscribe((heroes) => this.heroes = heroes);
   }
 }
 </script>
