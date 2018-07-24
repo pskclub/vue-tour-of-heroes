@@ -8,7 +8,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import HeroesComponent from '@/components/Heroes.vue';
+import HeroesComponent from '@/components/heroes-component.vue';
 
 @Component({
   components: {

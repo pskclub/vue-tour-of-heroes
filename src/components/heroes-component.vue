@@ -1,7 +1,6 @@
 <template>
 <div>
     <h2>My Heroes</h2>
-
     <ul class="heroes">
         <li v-for="hero of heroes"
             v-bind:key="hero.id"
@@ -10,6 +9,7 @@
             <span class="badge">{{hero.id}}</span> {{hero.name}}
         </li>
     </ul>
+    <hero-detail-component v-bind:hero="selectedHero" />
 </div>
 </template>
 
@@ -18,15 +18,20 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
+import HeroDetailComponent from '@/components/hero-detail-component.vue';
 
-@Component
+@Component({
+  components: {
+    HeroDetailComponent,
+  },
+})
 export default class HeroesComponent extends Vue {
   private selectedHero: Hero;
   private heroes = HEROES;
 
   constructor() {
     super();
-    this.selectedHero = {id: -1, name: ''};
+    this.selectedHero = { id: -1, name: '' };
   }
 
   private created() {
@@ -40,8 +45,6 @@ export default class HeroesComponent extends Vue {
 </script>
 
 <style>
-/* HeroesComponent's private CSS styles */
-
 .selected {
   background-color: #cfd8dc !important;
   color: white;
