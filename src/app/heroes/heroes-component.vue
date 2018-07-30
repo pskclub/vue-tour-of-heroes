@@ -24,7 +24,6 @@ import { HeroService } from './hero-service';
 import HeroDetailComponent from './hero-detail-component.vue';
 
 const HeroGetter = namespace('heroState', Getter);
-const HeroMutation = namespace('heroState', Mutation);
 const HeroAction = namespace('heroState', Action);
 
 @Component({
@@ -41,20 +40,19 @@ export default class HeroesComponent extends Vue {
   @HeroGetter('allHeroes')
   private heroes!: Hero[];
 
+  @HeroAction
+  private loadHeroes!: () => void;
+
   constructor() {
     super();
   }
 
   private created() {
-    this.getHeroes();
+    this.loadHeroes();
   }
 
   private onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
-
-  private getHeroes(): void {
-    // this.heroService.getHeroes().subscribe((heroes) => this.heroes = heroes);
+    this.selectedHero = Object.assign({}, hero);
   }
 }
 </script>
