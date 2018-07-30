@@ -14,7 +14,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import { Hero } from '../hero';
+import { Hero } from './hero';
 
 @Component
 export default class HeroDetailComponent extends Vue {

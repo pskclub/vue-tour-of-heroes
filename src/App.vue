@@ -9,7 +9,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import Provide from 'vue-property-decorator';
-import HeroesComponent from '@/components/heroes-component.vue';
+import HeroesComponent from './app/heroes/heroes-component.vue';
 
 @Component({
   components: {

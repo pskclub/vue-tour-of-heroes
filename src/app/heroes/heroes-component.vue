@@ -16,11 +16,11 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Hero } from '../hero';
-import { HeroService } from '@/hero.service';
-import { lazyInject } from '../container';
-import SERVICES from '../services';
-import HeroDetailComponent from '@/components/hero-detail-component.vue';
+import { lazyInject } from '../di/container';
+import SERVICES from '../di/services';
+import { Hero } from './hero';
+import { HeroService } from './hero.service';
+import HeroDetailComponent from './hero-detail-component.vue';
 
 @Component({
   components: {
