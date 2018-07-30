@@ -52,7 +52,7 @@ export default class HeroesComponent extends Vue {
   }
 
   private onSelect (hero: Hero): void {
-    this.selectedHero = Object.assign({}, hero)
+    this.selectedHero = {...hero}
   }
 }
 </script>

@@ -7,7 +7,7 @@ const state: HeroStateModel = {
 }
 
 const getters: GetterTree<HeroStateModel, RootStateModel> = {
-  allHeroes: (s) => s.heroes.slice()
+  allHeroes: s => s.heroes.slice()
 }
 
 const mutations: MutationTree<HeroStateModel> = {
@@ -26,12 +26,7 @@ const mutations: MutationTree<HeroStateModel> = {
     ]
   },
   _saveHero (s, newHero) {
-    s.heroes = s.heroes.map((hero) => {
-      if (hero.id === newHero.id) {
-        return newHero
-      }
-      return hero
-    })
+    s.heroes = s.heroes.map(hero =>  hero.id === newHero.id ? newHero : hero)
   }
 }
 
