@@ -1,8 +1,8 @@
 import { injectable, inject } from 'inversify';
-import SERVICES from '../di/services';
+import SERVICES from '@/app/di/services';
 import { Observable, of } from 'rxjs';
-import { Hero } from './hero';
-import { MockHeroes } from './mock-heroes';
+import { Hero } from '@/app/heroes/types';
+import { MockHeroes } from '@/app/heroes/mock-heroes';
 
 @injectable()
 export class HeroService {

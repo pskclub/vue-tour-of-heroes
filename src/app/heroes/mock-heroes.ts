@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { Hero } from './hero';
+import { Hero } from './types';
 
 @injectable()
 export class MockHeroes {

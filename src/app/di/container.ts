@@ -1,8 +1,8 @@
 import { Container } from 'inversify';
-import SERVICES from './services';
+import SERVICES from '@/app/di/services';
 import getDecorators from 'inversify-inject-decorators';
-import { HeroService } from '../heroes/hero.service';
-import { MockHeroes } from '../heroes/mock-heroes';
+import { HeroService } from '@/app/heroes/hero-service';
+import { MockHeroes } from '@/app/heroes/mock-heroes';
 
 const container = new Container();
 container.bind<MockHeroes>(SERVICES.MockHeroes).to(MockHeroes);

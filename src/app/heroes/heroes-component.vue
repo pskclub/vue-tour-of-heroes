@@ -16,11 +16,16 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { State, Getter, Mutation, Action, namespace } from 'vuex-class';
 import { lazyInject } from '../di/container';
 import SERVICES from '../di/services';
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Hero } from './types';
+import { HeroService } from './hero-service';
 import HeroDetailComponent from './hero-detail-component.vue';
+
+const HeroGetter = namespace('heroState', Getter);
+const HeroMutation = namespace('heroState', Mutation);
+const HeroAction = namespace('heroState', Action);
 
 @Component({
   components: {
@@ -29,10 +34,12 @@ import HeroDetailComponent from './hero-detail-component.vue';
 })
 export default class HeroesComponent extends Vue {
   private selectedHero: Hero | null = null;
-  private heroes: Hero[] | null = null;
 
   @lazyInject(SERVICES.HeroService)
   private heroService!: HeroService;
+
+  @HeroGetter('allHeroes')
+  private heroes!: Hero[];
 
   constructor() {
     super();
@@ -47,7 +54,7 @@ export default class HeroesComponent extends Vue {
   }
 
   private getHeroes(): void {
-    this.heroService.getHeroes().subscribe((heroes) => this.heroes = heroes);
+    // this.heroService.getHeroes().subscribe((heroes) => this.heroes = heroes);
   }
 }
 </script>
