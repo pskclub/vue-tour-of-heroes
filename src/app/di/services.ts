@@ -1,6 +1,6 @@
 const SERVICES = {
-    MockHeroes: Symbol('MockHeroes'),
-    HeroService: Symbol('HeroService'),
-};
+  MockHeroes: Symbol('MockHeroes'),
+  HeroService: Symbol('HeroService')
+}
 
-export default SERVICES;
+export default SERVICES

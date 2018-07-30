@@ -1,9 +1,9 @@
 export interface About {
-    id: number;
-    title: string;
-    body: string;
+  id: number
+  title: string
+  body: string
 }
 
 export interface AboutStateModel {
-    about: About;
+  about: About
 }

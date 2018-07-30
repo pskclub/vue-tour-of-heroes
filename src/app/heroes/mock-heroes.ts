@@ -1,5 +1,5 @@
-import { injectable } from 'inversify';
-import { Hero } from './types';
+import { injectable } from 'inversify'
+import { Hero } from './types'
 
 @injectable()
 export class MockHeroes {
@@ -13,10 +13,10 @@ export class MockHeroes {
     { id: 17, name: 'Dynama' },
     { id: 18, name: 'Dr IQ' },
     { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' },
-  ];
+    { id: 20, name: 'Tornado' }
+  ]
 
-  public getMockHeroes() {
-    return this.HEROES;
+  public getMockHeroes () {
+    return this.HEROES
   }
 }

@@ -1,58 +1,58 @@
 <template>
 <div>
-    <h2>My Heroes</h2>
-    <ul class="heroes">
-        <li v-for="hero of heroes"
-            v-bind:key="hero.id"
-            :class="{ 'selected': hero === selectedHero }"
-            v-on:click="onSelect(hero)">
-            <span class="badge">{{hero.id}}</span> {{hero.name}}
-        </li>
-    </ul>
-    <hero-detail-component v-bind:hero="selectedHero" />
+  <h2>My Heroes</h2>
+  <ul class="heroes">
+    <li v-for="hero of heroes"
+        v-bind:key="hero.id"
+        :class="{ 'selected': hero === selectedHero }"
+        v-on:click="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+  </ul>
+  <hero-detail-component v-bind:hero="selectedHero" />
 </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import { State, Getter, Mutation, Action, namespace } from 'vuex-class';
-import { lazyInject } from '../di/container';
-import SERVICES from '../di/services';
-import { Hero } from './types';
-import { HeroService } from './hero-service';
-import HeroDetailComponent from './hero-detail-component.vue';
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Action, Getter, namespace } from 'vuex-class'
+import { lazyInject } from '../di/container'
+import SERVICES from '../di/services'
+import { Hero } from './types'
+import { HeroService } from './hero-service'
+import HeroDetailComponent from './hero-detail-component.vue'
 
-const HeroGetter = namespace('heroState', Getter);
-const HeroAction = namespace('heroState', Action);
+const HeroGetter = namespace('heroState', Getter)
+const HeroAction = namespace('heroState', Action)
 
 @Component({
   components: {
-    HeroDetailComponent,
-  },
+    HeroDetailComponent
+  }
 })
 export default class HeroesComponent extends Vue {
-  private selectedHero: Hero | null = null;
+  private selectedHero: Hero | null = null
 
   @lazyInject(SERVICES.HeroService)
-  private heroService!: HeroService;
+  private heroService!: HeroService
 
   @HeroGetter('allHeroes')
-  private heroes!: Hero[];
+  private heroes!: Hero[]
 
   @HeroAction
-  private loadHeroes!: () => void;
+  private loadHeroes!: () => void
 
-  constructor() {
-    super();
+  constructor () {
+    super()
   }
 
-  private created() {
-    this.loadHeroes();
+  private created () {
+    this.loadHeroes()
   }
 
-  private onSelect(hero: Hero): void {
-    this.selectedHero = Object.assign({}, hero);
+  private onSelect (hero: Hero): void {
+    this.selectedHero = Object.assign({}, hero)
   }
 }
 </script>

@@ -1,17 +1,17 @@
-import { GetterTree, MutationTree, ActionTree, Module } from 'vuex';
-import { HeroStateModel, Hero } from './types';
-import RootStateModel from '../../root-state-model';
+import { ActionTree, GetterTree, Module, MutationTree } from 'vuex'
+import { HeroStateModel } from './types'
+import RootStateModel from '../../root-state-model'
 
 const state: HeroStateModel = {
-  heroes: [ ],
-};
+  heroes: []
+}
 
 const getters: GetterTree<HeroStateModel, RootStateModel> = {
-  allHeroes: (s) => s.heroes.slice(),
-};
+  allHeroes: (s) => s.heroes.slice()
+}
 
 const mutations: MutationTree<HeroStateModel> = {
-  _loadHeroes(s) {
+  _loadHeroes (s) {
     s.heroes = [
       { id: 11, name: 'Mr. Nice' },
       { id: 12, name: 'Narco' },
@@ -22,26 +22,26 @@ const mutations: MutationTree<HeroStateModel> = {
       { id: 17, name: 'Dynama' },
       { id: 18, name: 'Dr IQ' },
       { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' },
-    ];
+      { id: 20, name: 'Tornado' }
+    ]
   },
-  _saveHero(s, newHero) {
+  _saveHero (s, newHero) {
     s.heroes = s.heroes.map((hero) => {
       if (hero.id === newHero.id) {
-        return newHero;
+        return newHero
       }
-      return hero;
-    });
-  },
-};
+      return hero
+    })
+  }
+}
 
 const actions: ActionTree<HeroStateModel, RootStateModel> = {
-  loadHeroes(s) {
-    s.commit('_loadHeroes');
+  loadHeroes (s) {
+    s.commit('_loadHeroes')
   },
-  saveHero(s, newHero) {
-    s.commit('_saveHero', newHero);
-  },
+  saveHero (s, newHero) {
+    s.commit('_saveHero', newHero)
+  }
 }
 
 export const heroState: Module<HeroStateModel, RootStateModel> = {
@@ -49,5 +49,5 @@ export const heroState: Module<HeroStateModel, RootStateModel> = {
   getters,
   mutations,
   actions,
-  namespaced: true,
-};
+  namespaced: true
+}
