@@ -1,5 +1,5 @@
 const SERVICES = {
-    Container: Symbol('Container'),
+    HttpClient: Symbol('HttpClient'),
     HeroService: Symbol('HeroService'),
 };
 
