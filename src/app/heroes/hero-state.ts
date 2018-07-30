@@ -1,5 +1,6 @@
 import { GetterTree, MutationTree, ActionTree, Module } from 'vuex';
 import { HeroStateModel } from './types';
+import RootStateModel from '../../root-state-model';
 
 export const state: HeroStateModel = {
   heroes: [
@@ -16,11 +17,11 @@ export const state: HeroStateModel = {
   ],
 };
 
-export const getters: GetterTree<HeroStateModel, any> = {
+export const getters: GetterTree<HeroStateModel, RootStateModel> = {
   allHeroes: (s) => s.heroes.filter(() => true),
 };
 
-export const heroState: Module<HeroStateModel, any> = {
+export const heroState: Module<HeroStateModel, RootStateModel> = {
   state,
   getters,
   namespaced: true,
