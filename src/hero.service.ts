@@ -1,5 +1,5 @@
+import { injectable } from 'inversify';
 import { Observable, of } from 'rxjs';
-import { inject, injectable } from 'inversify';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 
@@ -7,7 +7,7 @@ import { HEROES } from './mock-heroes';
 export class HeroService {
 
   constructor() {
-      // Constructor
+    // Constructor
   }
 
   public getHeroes(): Observable<Hero[]> {

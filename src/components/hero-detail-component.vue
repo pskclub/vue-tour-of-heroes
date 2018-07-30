@@ -18,13 +18,14 @@ import { Hero } from '../hero';
 
 @Component
 export default class HeroDetailComponent extends Vue {
-  @Prop({
-    type: Object,
-  })
-  private hero?: Hero;
+  @Prop() private hero: Hero | null = null;
 
   constructor() {
     super();
+  }
+
+  private created() {
+    // Event handler
   }
 }
 </script>

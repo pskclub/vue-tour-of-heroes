@@ -10,8 +10,6 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import Provide from 'vue-property-decorator';
 import HeroesComponent from '@/components/heroes-component.vue';
-import SERVICE_IDENTIFIER from './identifiers';
-import container from './di';
 
 @Component({
   components: {
